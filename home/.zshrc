@@ -52,46 +52,85 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 
+# colorize - adds `ccat` command - `cat` with a programming languages syntax-highlighting.
 # compleat - Bash-completion.
+# copydir - copy part of directory into the clipboard.
+# copyfile - copy file content into the clipboard.
 # debian - aliases to apt-*, dpkg and aptitude. Useful: apt-history, kerndeb.
-# emoji-clock - clock. :-)
+# docker - Docker autocompletion.
+# docker-compose - docker-compose autocompletion and shortcuts.
 # encode64 - aliases to base64: e64, d64.
 # gem - Ruby gem installer autocompletion.
 # git - Git aliases.
 # git-extras - Extra Git autocompletion.
+# git-flow - Adds git-flow commands.
+# gitignore - enables you the use of https://www.gitignore.io/ from the command line. Adds `gi` command.
+# git-remote-branch - adds `grb` command, provides convenient way to create remote branch.
+# history - adds `h` and `hsi` aliases.
 # history-substring-search - searh substring in the shell history.
+# jsontools - adds commands to pretty-print JSON and encode/decode URLs.
 # jump - Easily jump around the file system by manually adding marks.
 # kate - alias to kate (and Kate is started silently from console).
+# last-working-dir - keeps track of the last used working directory and automatically jumps into it
+# man - `Esc` + man command shows manual for the previously typed command.
 # mosh - simply map SSH autocompletion to mosh. No overhead.
+# nmap - adds Nmap aliases.
+# pip - Python pip autocompletion.
+# pj - project jump: allows you to define several folders where you store your projects,
+#   so that you can jump there directly by just using the name of the project directory.
+# pyenv - loads pyenv into the current shell and provides prompt info.
+# pylint - adds autocompletion for Pylint and alias `pylint-quick`.
 # python - pyclean, pyfind, pygrep.
-# rand-quote - random quote from http://www.quotationspage.com
-#    (function `quote`).
+# rand-quote - random quote from http://www.quotationspage.com (function `quote`).
+# rsync - adds several aliases for Rsync: rsync-copy, rsync-move, rsync-update, rsync-synchronize.
+# scd - adds `scd` command to smart change directory.
+# systemd - add aliases with sudo for the system.d commands (start, stop, restart, etc.).
+# thefuck - corrects your previous console command by pressing `Esc`+`Esc`.
 # themes - add functions `theme` and `lstheme` for loading and listing
 #    oh-my-zsh themes.
-# torrent - magnet link to torrent file converter
-#    (function `magnet_to_torrent`).
+# torrent - magnet link to torrent file converter (function `magnet_to_torrent`).
+# ubuntu - adds several useful aliases.
 # urltools - `urldecode` and `urlencode` functions.
+# vim-interaction - adds a function called `callvim` and several aliases.
+# virtualenv - displays information of the created virtual container and allows background theming.
 # web-search - search from the terminal. Aliases: bing, google, yahoo,
 #    ddg (for Duckduckgo), wiki, news, youtube, map, image, ducky.
 
-#emoji-clock
 # `debian` plugin is useless.
 
-plugins=(colored-man compleat encode64 gem \
-         git git-extras git-flow git-remote-branch history-substring-search \
-         jump kate mosh python rand-quote themes torrent ubuntu urltools)
+plugins=(colorize compleat colored-man copydir copyfile docker docker-compose \
+         encode64 gem git git-extras git-flow git-remote-branch history \
+         history-substring-search jsontools jump kate last-working-dir \
+         man mosh nmap pip pj pyenv pylint python rand-quote rsync scd systemd \
+         themes torrent ubuntu urltools viminteraction virtualenv web-search)
+#
+# Interesting plugins.
+#
 
-# Interesting plugins:
-# cp - replace 'cp' to 'rsync'.
+# ack - autocompletion plugin for the `ack`, grep replacement.
+# battery - display battery information.
+# catimg - display image in the text console (without framebuffer).
+# cp - create `cpv` function, based on `rsync` command.
+# common-aliases - not very useful, but sometimes convenient aliases.
 # dircycle - cycling through directory stack.
 # dirpersist - persistent directory stack.
+# dirhistory - adds keyboard shortcuts for navigating directory history and hierarchy.
+# docker-machine - autocompletion for the `docker-machine` command.
+# emoji - conveniently working with Unicode emoji in Zsh.
+# emoji-clock - clock (not convenient, because clock is on the right of command prompt and if I want to copy previous line, clock adds spacebars). :-)
 # extract - extract archives, but I use my own function.
+# fastfile - adds the ability to on the fly generate and access file shortcuts.
 # fbterm - framebuffer terminal. Buggy on NVIDIA.
-# git-flow-avh
+# fzf - fuzzy auto-completion and key bindings.
+# git-auto-fetch - fetches all changes from all remotes while you are working in git-initialized directory.
+# git-flow-avh - adds completion for the git-flow AVH Edition (https://github.com/petervanderdoes/gitflow-avh).
 # gitfast - fast Git autocompletion.
 # github.
+# git-prompt - informative git prompt for zsh.
 # gnu-utils - use GNU utilities for replace built-in functions.
 # go/golang - Google Go language compiler autocompletion.
+# magic-center - binds commands on the `Enter` key.
+# mix-fast caches the output for later usage and significantly speeds it up (needs `mix`).
 # nyan - animated terminal nyan cat.
 # pass - password manager.
 # per-directory-history - history unique for each directory.
@@ -100,22 +139,24 @@ plugins=(colored-man compleat encode64 gem \
 # postgres - aliases for starting/restarting Postgres SQL.
 # rails. rails3, rails4 - aliases for Ruby On Rails.
 # redis-cli - Redis database client completion.
-# rsync - aliases for rsync (rsync-copy, rsync-move, rsync-update,
-#    rsync-synchronize).
+# rsync - aliases for rsync (rsync-copy, rsync-move, rsync-update, rsync-synchronize).
 # ruby - aliases: rfind, rgem.
 # safe-paste - safe paste text to the X-terminal.
 # scala - autocompletion for Scala compiler.
 # screen - plugin for GNU Screen.
+# singlechar - adds single char shortcuts (and combinations) for some commands.
 # sprunge - command line Pastebin (function `sprunge`).
 # ssh-agent - wrapper for the SSH autentification agent.
-# sublime - set paths for Sublime text editor on MacOS X and add alias `stt`
-#    on all systems.
+# sublime - set paths for Sublime text editor on MacOS X and add alias `stt` on all systems.
 # svn  - functions for Subversion (like svn_get_branch_name).
-# systemd - add aliases with sudo for the system.d commands (start, stop,
-#    restart, etc.).
+# systemadmin - adds useful aliases for system administrators.
 # taskwarrior - console task manager.
+# transfer - file sharing from command line.
 # vi-mode - enable handy Vim mode in the terminal.
 # vundle - bundle manager for Vim.
+# wd - (*warp directory*) lets you jump to custom directories in zsh, without using `cd`.
+# z - tracks most used directories.
+# zsh-navigation-tools - several Zsh navigation utilities.
 # yum - Aliases for Yum commands. For RH-based.
 
 
@@ -173,7 +214,10 @@ alias -g NO='1 > /dev/null'
 # Customize to your needs...
 export PATH="$PATH:${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/bin"
 
-# Часто используемые каталоги.
+# Need for PJ plugin.
+PROJECT_PATHS="~/projects/CURENT/lab_software/"
+
+# Often-used path.
 cdpath=( ${HOME}/Docs ${HOME}/Downloads ${HOME}/Desktop ${HOME}/projects )
 
 #if [ "$color_prompt" = yes ]; then
