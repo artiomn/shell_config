@@ -215,7 +215,7 @@ alias -g NO='1 > /dev/null'
 export PATH="$PATH:${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/bin"
 
 # Need for PJ plugin.
-PROJECT_PATHS="~/projects/CURENT/lab_software/"
+export PROJECT_PATHS=( ~/projects/ )
 
 # Often-used path.
 cdpath=( ${HOME}/Docs ${HOME}/Downloads ${HOME}/Desktop ${HOME}/projects )
