@@ -1,0 +1,1 @@
+20fortune.sh

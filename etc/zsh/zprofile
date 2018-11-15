@@ -1,0 +1,29 @@
+# /etc/zsh/zprofile: system-wide .zprofile file for zsh(1).
+#
+# This file is sourced only for login shells (i.e. shells
+# invoked with "-" as the first character of argv[0], and
+# shells invoked with the -l flag.)
+#
+# Global Order: zshenv, zprofile, zshrc, zlogin
+
+if [ "`id -u`" -eq 0 ]; then
+   PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+else
+   PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+fi
+export PATH
+
+if [ "`id -u`" -eq 0 ]; then
+   PS1='# '
+else
+   PS1='$ '
+fi
+
+if [ -d /etc/profile.d ]; then
+  for i in /etc/profile.d/*.zsh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
