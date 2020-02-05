@@ -204,8 +204,13 @@ unsetopt correct_all
 
 # For Debian and Ubuntu plugins.
 compdef -d ag ag_
-unalias ag
-#unalias ar
+
+for cmd in ar ag; do
+    if [[ $(whence -w "$cmd"|cut -f2 -d' ') == "alias" ]]; then
+        unalias "$cmd"
+    fi
+done
+
 
 # Global aliases.
 alias -g NE='2 > /dev/null'
@@ -215,7 +220,14 @@ alias -g NO='1 > /dev/null'
 export PATH="$PATH:${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/bin"
 
 # Need for PJ plugin.
-export PROJECT_PATHS=( $(ls -1d ~/projects/CURRENT/*) )
+
+if [[ -d ~/projects/CURRENT ]]; then
+    export PROJECT_PATHS=( $(ls -1d ~/projects/CURRENT/*) )
+elif [[ -d ~/projects ]]; then
+    export PROJECT_PATHS=( $(ls -1d ~/projects/*) )
+else
+    export PROJECT_PATHS=( $(ls -1d ~/*) )
+fi
 
 # Often-used path.
 cdpath=( ${HOME}/Docs ${HOME}/Downloads ${HOME}/Desktop ${HOME}/projects )
@@ -293,6 +305,9 @@ esac
 # Removed:
 zstyle ':completion:*' matcher-list '' ''
 
-alias to    'cd `(apparix -favour rOl \!* || echo -n .)` && pwd'
-alias bm   'apparix --add-mark \!*'
-alias portal 'apparix --add-portal \!*'
+if which apparix > /dev/null; then
+    alias to    'cd `(apparix -favour rOl \!* || echo -n .)` && pwd'
+    alias bm   'apparix --add-mark \!*'
+    alias portal 'apparix --add-portal \!*'
+fi
+
