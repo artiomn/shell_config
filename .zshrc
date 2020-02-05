@@ -98,11 +98,11 @@ CASE_SENSITIVE="true"
 
 # `debian` plugin is useless.
 
-plugins=(colorize compleat colored-man copydir copyfile docker docker-compose \
+plugins=(colorize compleat copydir copyfile docker docker-compose \
          encode64 gem git git-extras git-flow git-remote-branch history \
          history-substring-search jsontools jump kate last-working-dir \
          man mosh nmap pip pj pyenv pylint python rand-quote rsync scd systemd \
-         themes torrent ubuntu urltools viminteraction virtualenv web-search)
+         themes torrent ubuntu urltools virtualenv web-search)
 #
 # Interesting plugins.
 #

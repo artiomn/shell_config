@@ -91,18 +91,17 @@ CASE_SENSITIVE="true"
 # torrent - magnet link to torrent file converter (function `magnet_to_torrent`).
 # ubuntu - adds several useful aliases.
 # urltools - `urldecode` and `urlencode` functions.
-# vim-interaction - adds a function called `callvim` and several aliases.
 # virtualenv - displays information of the created virtual container and allows background theming.
 # web-search - search from the terminal. Aliases: bing, google, yahoo,
 #    ddg (for Duckduckgo), wiki, news, youtube, map, image, ducky.
 
 # `debian` plugin is useless.
 
-plugins=(colorize compleat colored-man copydir copyfile docker docker-compose \
+plugins=(colorize compleat copydir copyfile docker docker-compose \
          encode64 gem git git-extras git-flow git-remote-branch history \
          history-substring-search jsontools jump kate last-working-dir \
          man mosh nmap pip pj pyenv pylint python rand-quote rsync scd systemd \
-         themes torrent ubuntu urltools viminteraction virtualenv web-search)
+         themes torrent ubuntu urltools virtualenv web-search)
 #
 # Interesting plugins.
 #
