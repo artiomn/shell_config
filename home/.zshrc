@@ -17,7 +17,7 @@ ZSH=$HOME/.oh-my-zsh
 
 # Good themes: gentoo, agnoster, duellj.
 
-ZSH_THEME="gentoo"
+ZSH_THEME="crunch"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -91,6 +91,7 @@ CASE_SENSITIVE="true"
 # torrent - magnet link to torrent file converter (function `magnet_to_torrent`).
 # ubuntu - adds several useful aliases.
 # urltools - `urldecode` and `urlencode` functions.
+# vim-interaction - adds a function called `callvim` and several aliases.
 # virtualenv - displays information of the created virtual container and allows background theming.
 # web-search - search from the terminal. Aliases: bing, google, yahoo,
 #    ddg (for Duckduckgo), wiki, news, youtube, map, image, ducky.
@@ -203,8 +204,13 @@ unsetopt correct_all
 
 # For Debian and Ubuntu plugins.
 compdef -d ag ag_
-unalias ag
-#unalias ar
+
+for cmd in ar ag; do
+    if [[ $(whence -w "$cmd"|cut -f2 -d' ') == "alias" ]]; then
+        unalias "$cmd"
+    fi
+done
+
 
 # Global aliases.
 alias -g NE='2 > /dev/null'
@@ -214,7 +220,15 @@ alias -g NO='1 > /dev/null'
 export PATH="$PATH:${HOME}/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/bin"
 
 # Need for PJ plugin.
-export PROJECT_PATHS=( ~/projects/ )
+
+
+if [[ -d ~/projects/CURRENT ]]; then
+    export PROJECT_PATHS=( $(ls -1d ~/projects/CURRENT/*) )
+elif [[ -d ~/projects ]]; then
+    export PROJECT_PATHS=( $(ls -1d ~/projects/) )
+else
+    export PROJECT_PATHS=( $(ls -1d ~/*) )
+fi
 
 # Often-used path.
 cdpath=( ${HOME}/Docs ${HOME}/Downloads ${HOME}/Desktop ${HOME}/projects )
@@ -292,6 +306,9 @@ esac
 # Removed:
 zstyle ':completion:*' matcher-list '' ''
 
-alias to    'cd `(apparix -favour rOl \!* || echo -n .)` && pwd'
-alias bm   'apparix --add-mark \!*'
-alias portal 'apparix --add-portal \!*'
+if which apparix > /dev/null; then
+    alias to    'cd `(apparix -favour rOl \!* || echo -n .)` && pwd'
+    alias bm   'apparix --add-mark \!*'
+    alias portal 'apparix --add-portal \!*'
+fi
+
