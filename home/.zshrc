@@ -98,11 +98,21 @@ CASE_SENSITIVE="true"
 
 # `debian` plugin is useless.
 
+
 plugins=(colorize compleat copydir copyfile docker docker-compose \
-         encode64 gem git git-extras git-flow git-remote-branch history \
+         encode64 gem git git-extras git-flow history \
          history-substring-search jsontools jump kate last-working-dir \
          man mosh nmap pip pj pyenv pylint python rand-quote rsync scd systemd \
          themes torrent ubuntu urltools virtualenv web-search)
+
+if [ ! -d "${ZSH}/plugins/zsh-syntax-highlighting" ] && command -v git &>/dev/null; then
+    git clone --progress "https://github.com/zsh-users/zsh-syntax-highlighting" "${ZSH}/plugins/zsh-syntax-highlighting" && \
+fi
+
+if [ -d "${ZSH}/plugins/zsh-syntax-highlighting" ]; then
+    plugins+='zsh-syntax-highlighting'
+fi
+
 #
 # Interesting plugins.
 #
