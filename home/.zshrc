@@ -99,7 +99,7 @@ CASE_SENSITIVE="true"
 # `debian` plugin is useless.
 
 
-plugins=(colorize compleat copydir copyfile docker docker-compose \
+plugins=(colorize compleat copyfile docker docker-compose \
          encode64 gem git git-extras git-flow history \
          history-substring-search jsontools jump kate last-working-dir \
          man mosh nmap pip pj pyenv pylint python rand-quote rsync scd systemd \
